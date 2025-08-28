@@ -13,7 +13,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({ userData, onInputCh
       <div className="text-center mb-8">
         <User className="mx-auto w-16 h-16 text-blue-500 mb-4" />
         <h2 className="text-2xl font-bold text-gray-800">Información Personal</h2>
-        <p className="text-gray-600">Cuéntanos sobre ti para personalizar tu plan</p>
+        <p className="text-gray-600">Hola Yelita, Cuéntame un poco sobre ti para personalizar tu plan</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

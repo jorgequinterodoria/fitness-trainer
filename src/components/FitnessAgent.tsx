@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserData, Results } from "../types";
 import { generatePersonalizedPlan } from "../services/planGenerator";
 import ProgressIndicator from "./ProgressIndicator";
@@ -9,34 +9,55 @@ import NutritionStep from "./steps/NutritionStep";
 import GeneratePlanStep from "./steps/GeneratePlanStep";
 import ResultsView from "./results/ResultsView";
 
+// Clave para almacenar los datos en localStorage
+const USER_DATA_KEY = 'fitness_trainer_user_data';
+
 const FitnessAgent = () => {
     const [currentStep, setCurrentStep] = useState(1);
-    const [userData, setUserData] = useState<UserData>({
-        // Datos básicos
-        gender: "",
-        age: "",
-        currentWeight: "",
-        targetWeight: "",
-        height: "",
-        timeFrame: "",
+    const [userData, setUserData] = useState<UserData>(() => {
+        // Intentar cargar datos del usuario desde localStorage al iniciar
+        const savedData = localStorage.getItem(USER_DATA_KEY);
+        if (savedData) {
+            try {
+                return JSON.parse(savedData);
+            } catch (error) {
+                console.error("Error al cargar datos guardados:", error);
+            }
+        }
+        
+        // Valores por defecto si no hay datos guardados
+        return {
+            // Datos básicos
+            gender: "",
+            age: "",
+            currentWeight: "",
+            targetWeight: "",
+            height: "",
+            timeFrame: "",
 
-        // Rutina diaria
-        dailyRoutine: "",
-        availableTime: "",
-        activityLevel: "",
+            // Rutina diaria
+            dailyRoutine: "",
+            availableTime: "",
+            activityLevel: "",
 
-        // Alimentación
-        foodsYes: "",
-        foodsRecommended: "",
-        foodsNo: "",
+            // Alimentación
+            foodsYes: "",
+            foodsRecommended: "",
+            foodsNo: "",
 
-        // Preferencias de ejercicio
-        exercisePreference: "",
-        fitnessLevel: "",
+            // Preferencias de ejercicio
+            exercisePreference: "",
+            fitnessLevel: "",
+        };
     });
 
     const [results, setResults] = useState<Results | null>(null);
     const [isGenerating, setIsGenerating] = useState(false);
+
+    // Guardar datos del usuario en localStorage cada vez que cambien
+    useEffect(() => {
+        localStorage.setItem(USER_DATA_KEY, JSON.stringify(userData));
+    }, [userData]);
 
     const handleInputChange = (field: keyof UserData, value: string) => {
         setUserData((prev) => ({
