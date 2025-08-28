@@ -39,3 +39,4 @@ export const validateGoal = (currentWeight: number, targetWeight: number, timeFr
     recommendedWeight: Math.round(recommendedWeight * 10) / 10,
     recommendedWeightChange: Math.round(recommendedWeightChange * 10) / 10
   };
+}; // Esta llave de cierre faltaba
