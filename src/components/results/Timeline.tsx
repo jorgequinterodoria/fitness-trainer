@@ -15,7 +15,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
       </h3>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {Object.entries(timeline).map(([month, objective], index) => (
+        {Object.entries(timeline).map(([month, objective], _index) => (
           <div key={month} className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
             <h5 className="font-medium text-purple-800 capitalize">{month.replace('month', 'Mes ')}</h5>
             <p className="text-sm text-purple-700 mt-2">{objective}</p>
