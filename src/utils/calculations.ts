@@ -17,7 +17,7 @@ export const calculateTDEE = (bmr: number, activityLevel: string) => {
   return bmr * (multipliers[activityLevel] || 1.2);
 };
 
-export const validateGoal = (currentWeight: number, targetWeight: number, timeFrame: number, gender: string) => {
+export const validateGoal = (currentWeight: number, targetWeight: number, timeFrame: number) => {
   const weightDifference = currentWeight - targetWeight;
   const weeks = timeFrame * 4; // Convertir meses a semanas
   const weeklyGoal = Math.abs(weightDifference) / weeks;
