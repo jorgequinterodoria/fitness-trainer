@@ -14,8 +14,8 @@ export const generatePersonalizedPlan = async (userData: UserData): Promise<Resu
   const goalValidation = validateGoal(
     parseFloat(userData.currentWeight),
     parseFloat(userData.targetWeight),
-    parseInt(userData.timeFrame),
-    userData.gender
+    parseInt(userData.timeFrame)
+    // Eliminar el cuarto parámetro: userData.gender
   );
 
   // Simular respuesta de API (ya que no tenemos acceso real a Claude)
