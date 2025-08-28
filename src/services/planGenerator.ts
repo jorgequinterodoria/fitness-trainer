@@ -45,12 +45,12 @@ export const generatePersonalizedPlan = async (userData: UserData): Promise<Resu
         },
         {
           meal: "Cena",
-          foods: ["Salmón al horno", "Verduras al vapor", "Quinoa"],
+          foods: ["Pescado al horno", "Verduras al vapor",],
           calories: Math.round(tdee * 0.30)
         },
         {
           meal: "Snacks",
-          foods: ["Frutos secos", "Yogur griego", "Frutas"],
+          foods: ["Frutos secos",  "Frutas"],
           calories: Math.round(tdee * 0.10)
         }
       ],
